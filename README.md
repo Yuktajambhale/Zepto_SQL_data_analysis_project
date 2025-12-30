@@ -1,4 +1,12 @@
 🛒 Zepto E-commerce SQL Data Analyst Portfolio Project
+
+
+
+
+
+
+
+
 📌 Overview
 
 A real-world SQL Data Analytics portfolio project built on an e-commerce inventory dataset scraped from Zepto, one of India’s leading quick-commerce platforms.
@@ -17,7 +25,7 @@ This project simulates a complete end-to-end Data Analyst workflow — from raw 
 
 🎯 Project Objective
 
-The goal of this project is to use SQL to:
+Use SQL to:
 
 Build a realistic e-commerce inventory database
 
@@ -33,23 +41,19 @@ Generate insights on pricing, inventory, stock & revenue
 
 Source: Kaggle
 
-Originally scraped from Zepto product listings
+Originally scraped from: Zepto product listings
 
-Each row represents a unique SKU (Stock Keeping Unit)
+Row: Each row represents a unique SKU (Stock Keeping Unit)
 
-🔹 Duplicate product names exist due to:
+Notes: Duplicate product names exist due to different weights, quantities, discounts, and categories
 
-Different weights
+🛠 Tools & Technologies
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=sql&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+![CSV](https://img.shields.io/badge/CSV-FF6C37?style=for-the-badge)
+![pgAdmin](https://img.shields.io/badge/pgAdmin-336791?style=for-the-badge)
 
-Different quantities
-
-Different discounts
-
-Multiple categories
-
-➡️ Exactly how real e-commerce catalog data looks.
-
-🧾 Column Description
+🔹 Column Description
 Column Name	Description
 sku_id	Unique product identifier (Primary Key)
 name	Product name
@@ -64,30 +68,29 @@ quantity	Units per package
 🔧 Project Workflow
 1️⃣ Database & Table Creation
 CREATE TABLE zepto (
-  sku_id SERIAL PRIMARY KEY,
-  category VARCHAR(120),
-  name VARCHAR(150) NOT NULL,
-  mrp NUMERIC(8,2),
-  discountPercent NUMERIC(5,2),
-  availableQuantity INTEGER,
-  discountedSellingPrice NUMERIC(8,2),
-  weightInGms INTEGER,
-  outOfStock BOOLEAN,
-  quantity INTEGER
+    sku_id SERIAL PRIMARY KEY,
+    category VARCHAR(120),
+    name VARCHAR(150) NOT NULL,
+    mrp NUMERIC(8,2),
+    discountPercent NUMERIC(5,2),
+    availableQuantity INTEGER,
+    discountedSellingPrice NUMERIC(8,2),
+    weightInGms INTEGER,
+    outOfStock BOOLEAN,
+    quantity INTEGER
 );
 
 2️⃣ Data Import
 
 Imported using pgAdmin CSV import
+
 Alternative command:
 
-\copy zepto(category,name,mrp,discountPercent,availableQuantity,
-            discountedSellingPrice,weightInGms,outOfStock,quantity)
-FROM 'data/zepto_v2.csv'
-WITH (FORMAT csv, HEADER true, DELIMITER ',', QUOTE '"', ENCODING 'UTF8');
+\copy zepto(category,name,mrp,discountPercent,availableQuantity, discountedSellingPrice,weightInGms,outOfStock,quantity) 
+FROM 'data/zepto_v2.csv' WITH (FORMAT csv, HEADER true, DELIMITER ',', QUOTE '"', ENCODING 'UTF8');
 
 
-⚠️ CSV encoding issues fixed by saving the file in UTF-8 format.
+⚠️ CSV encoding issues fixed by saving the file in UTF-8 format
 
 3️⃣ 🔍 Exploratory Data Analysis (EDA)
 
@@ -129,17 +132,20 @@ Standardized numeric columns for accuracy
 
 🏷️ Total inventory weight per category
 
-🛠️ How to Run the Project
+🛠 How to Run the Project
+# Clone repository
+git clone <repo-link>
 
-Clone the repository
+# Create a PostgreSQL database
+createdb zepto_db
 
-Create a PostgreSQL database
+# Run SQL script
+psql -d zepto_db -f zepto_SQL_data_analysis.sql
 
-Run zepto_SQL_data_analysis.sql
+# Import dataset (UTF-8 encoding)
+\copy zepto(...) FROM 'data/zepto_v2.csv' WITH (FORMAT csv, HEADER true)
 
-Import dataset (UTF-8 encoding)
-
-Execute queries for analysis
+# Execute queries for analysis
 
 📈 Skills Demonstrated
 
@@ -157,3 +163,6 @@ Business-driven problem solving
 
 Yukta Jambhale
 Aspiring Data Analyst | SQL | Data Analytics
+
+📫 Connect: LinkedIn
+ | Email: yuktajambhale2000@gmail.com
